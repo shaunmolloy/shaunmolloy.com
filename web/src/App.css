@@ -11,13 +11,13 @@
 .hero {
   width: 100%;
   max-width: 860px;
-  margin: 0 0 64px;
+  margin: 0 0 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.hero h1 {
+h1 {
   font-size: clamp(2rem, 4vw, 3rem);
   margin: 0;
   letter-spacing: -0.02em;
