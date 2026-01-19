@@ -3,13 +3,18 @@
   "version": "0.0.0",
   "description": "Website for https://shaunmolloy.com/.",
   "scripts": {
+    "dev": "concurrently \"npm run cms:dev\" \"npm run web:dev\"",
+    "cms:dev": "cd cms && npm run dev",
+    "cms:build": "cd cms && npm run build",
     "web:dev": "cd web && npm run dev",
-    "web:build": "cd web && npm run build",
-    "web:preview": "cd web && npm run preview"
+    "web:build": "cd web && npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shaunmolloy/shaunmolloy.com.git"
   },
-  "author": "Shaun Molloy"
+  "author": "Shaun Molloy",
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
 }
