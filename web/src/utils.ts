@@ -4,9 +4,15 @@ export const formatPostDate = (value?: string) => {
   const date = new Date(value)
   if (Number.isNaN(date.getTime())) return null
 
-  return new Intl.DateTimeFormat('en-US', {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    day: '2-digit',
     month: 'short',
-    day: 'numeric',
     year: 'numeric',
-  }).format(date)
+  }).formatToParts(date)
+
+  const day = parts.find((part) => part.type === 'day')?.value
+  const month = parts.find((part) => part.type === 'month')?.value
+  const year = parts.find((part) => part.type === 'year')?.value
+
+  return day && month && year ? `${day} ${month} ${year}` : null
 }
