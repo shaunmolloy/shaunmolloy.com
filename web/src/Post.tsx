@@ -1,9 +1,15 @@
+import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { posts } from './data'
 
 function Post() {
   const { slug } = useParams()
   const post = posts.find((entry) => entry.slug === slug)
+
+  useEffect(() => {
+    if (!post) return
+    document.title = `${post.title} - Shaun Molloy`
+  }, [post])
 
   if (!post) {
     return (
