@@ -1,20 +1,8 @@
 import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { posts } from './data'
+import { formatPostDate } from './utils'
 import './Post.css'
-
-const formatPostDate = (value?: string) => {
-  if (!value) return null
-
-  const date = new Date(value)
-  if (Number.isNaN(date.getTime())) return null
-
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(date)
-}
 
 function Post() {
   const { slug } = useParams()
