@@ -1,10 +1,25 @@
 import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { posts } from './data'
+import './Post.css'
+
+const formatPostDate = (value?: string) => {
+  if (!value) return null
+
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return null
+
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date)
+}
 
 function Post() {
   const { slug } = useParams()
   const post = posts.find((entry) => entry.slug === slug)
+  const postDate = formatPostDate(post?.date)
 
   useEffect(() => {
     if (!post) return
@@ -25,11 +40,20 @@ function Post() {
 
   return (
     <section className="section section--thin">
-      <div className="section-header">
-        <h1>{post.title}</h1>
-        <Link className="muted-link" to="/">
-          Back to home
-        </Link>
+      <div className="post-header">
+        <nav className="breadcrumbs" aria-label="Breadcrumb">
+          <Link className="muted-link" to="/">
+            Home
+          </Link>
+          <span className="breadcrumbs-separator" aria-hidden="true">
+            /
+          </span>
+          <span className="breadcrumbs-current">Posts</span>
+        </nav>
+        <div className="post-title">
+          <h1>{post.title}</h1>
+          {postDate ? <p className="meta">{postDate}</p> : null}
+        </div>
       </div>
       <div className="post-body">
         {post.content.split(/\n\s*\n/).map((paragraph, index) => (

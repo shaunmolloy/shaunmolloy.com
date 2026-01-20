@@ -1,10 +1,12 @@
 export type PostFrontmatter = {
   title: string
+  date?: string
 }
 
 export type PostEntry = {
   slug: string
   title: string
+  date?: string
   description: string
   content: string
 }
