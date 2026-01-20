@@ -46,7 +46,7 @@ function Posts() {
               <div>
                 <h3>
                   <Link to={`/posts/${post.slug}`}>
-                    {post.title} <ArrowTopRightIcon aria-hidden="true" />
+                    {post.title}
                   </Link>
                 </h3>
                 <p>{post.description}</p>
