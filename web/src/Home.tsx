@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 import * as Separator from '@radix-ui/react-separator'
@@ -86,6 +87,10 @@ function Projects() {
 }
 
 function Home() {
+  useEffect(() => {
+    document.title = 'Shaun Molloy'
+  }, [])
+
   return (
     <>
       <Hero />
