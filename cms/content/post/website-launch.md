@@ -1,5 +1,6 @@
 ---
 title: Website launch
+date: 2026-01-19
 ---
 
 In the past week I've launched this website. It's structured as a monorepo with cms and web projects. Not only does this separate concerns, it will allow me to add or replace a project if needed.
