@@ -5,12 +5,23 @@ export default {
   label: "Blog Posts",
   name: "post",
   path: "content/post",
-  format: "mdx",
+  format: "md",
   fields: [
     {
       type: "string",
       label: "Title",
       name: "title",
+    },
+    {
+      type: "datetime",
+      label: "Date",
+      name: "date",
+    },
+    {
+      type: "string",
+      label: "Category",
+      name: "category",
+      options: ["dev", "homelab", "life"],
     },
     {
       type: "rich-text",

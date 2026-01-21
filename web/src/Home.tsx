@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 import * as Separator from '@radix-ui/react-separator'
-import { formatPostDate } from './utils'
 import { links, posts, projects } from './data'
 
 function Hero() {
@@ -39,19 +38,19 @@ function Posts() {
       </div>
       <div className="list">
         {posts.map((post) => {
-          const postDate = formatPostDate(post.date)
-
           return (
             <article key={post.slug} className="list-item">
-              <div>
+              <div className="breadcrumbs">
+                <p>{post.category}</p>
+                <span className="breadcrumbs-separator" aria-hidden="true">
+                /
+                  </span>
                 <h3>
                   <Link to={`/posts/${post.slug}`}>
                     {post.title}
                   </Link>
                 </h3>
-                <p>{post.description}</p>
               </div>
-              {postDate ? <span className="meta">{postDate}</span> : null}
             </article>
           )
         })}
