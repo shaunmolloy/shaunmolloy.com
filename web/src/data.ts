@@ -25,9 +25,12 @@ const parseFrontmatter = (content: string): PostFrontmatter => {
 
   const titleMatch = frontmatterMatch[1].match(/title:\s*['"]?(.+?)['"]?\s*$/m)
   const dateMatch = frontmatterMatch[1].match(/date:\s*['"]?(.+?)['"]?\s*$/m)
+  const categoryMatch = frontmatterMatch[1].match(/category:\s*['"]?(.+?)['"]?\s*$/m)
+
   return {
     title: titleMatch?.[1]?.trim() ?? 'Untitled',
     date: dateMatch?.[1]?.trim(),
+    category: categoryMatch?.[1]?.trim(),
   }
 }
 
@@ -42,6 +45,7 @@ export const posts: PostEntry[] = Object.entries(postModules).map(([path, conten
     slug,
     title: frontmatter.title,
     date: frontmatter.date,
+    category: frontmatter.category,
     description: '',
     content: stripFrontmatter(content).trim(),
   }

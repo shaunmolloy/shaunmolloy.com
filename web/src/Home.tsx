@@ -40,13 +40,16 @@ function Posts() {
         {posts.map((post) => {
           return (
             <article key={post.slug} className="list-item">
-              <div>
+              <div className="breadcrumbs">
+                <p>{post.category}</p>
+                <span className="breadcrumbs-separator" aria-hidden="true">
+                /
+                  </span>
                 <h3>
                   <Link to={`/posts/${post.slug}`}>
                     {post.title}
                   </Link>
                 </h3>
-                <p>{post.description}</p>
               </div>
             </article>
           )
